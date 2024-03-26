@@ -24,6 +24,7 @@ const organizationRouter = require('./route/organization.route')
 const itemRouter = require('./route/item.route')
 const pricingRouter = require('./route/pricing.route')
 
+app.get('/', (req, res) => res.status(200).send('Welcome To Food Delivery App'));
 app.use('/api/organization', organizationRouter);
 app.use('/api/item',itemRouter);
 app.use('/api/pricing',pricingRouter);
