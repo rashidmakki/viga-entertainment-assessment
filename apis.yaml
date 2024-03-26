@@ -6,7 +6,7 @@ info:
   
 
 servers:
-  - url: http://localhost:3000/api/
+  - url: https://viga-entertainment-assessment.onrender.com/api/
     description:  Local server 
  
 components:
