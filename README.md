@@ -7,6 +7,6 @@ Assessment on NodeJS, Express, Sequelize , Postgres
 
             npm install
             
-- To start application using mvn command:
+- To start application:
 
             npm start
