@@ -1,0 +1,324 @@
+openapi: 3.0.0
+info:
+  title: Food Delivery App API Documentation
+  description: API documentation for Food Delivery App
+  version: 1.0 
+  
+
+servers:
+  - url: http://localhost:3000/api/
+    description:  Local server 
+ 
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        type:
+          type: string
+          example: perishable
+        description:
+          type: string
+          example: perishable
+      required:
+        - type
+        - description
+    Organization:
+      type: object
+      properties:
+        name:
+          type: string
+          example: ABC Company
+      required:
+        - name
+    Pricing:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          example: "1"
+        item_id:
+          type: number
+          example: 1
+        zone:
+          type: string
+          example: central
+        base_distance_in_km:
+          type: number
+          example: 5
+        km_price:
+          type: number
+          example: 1
+        fix_price:
+          type: number
+          example: 10
+      required:
+        - organization_id
+        - item_id
+        - zone
+        - base_distance_in_km
+        - km_price 
+        - fix_price
+    GetPriceDetails:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          example: "1"
+        item_type:
+          type: string
+          example: perishable
+        zone:
+          type: string
+          example: central
+        total_distance:
+          type: number
+          example: 12
+      required:
+        - organization_id
+        - item_type
+        - zone
+        - total_distance
+paths:
+  /item:
+    post:
+      tags:
+        - Item Detail
+      summary: Return created Item.       
+      post:
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item' 
+      responses:
+        '200':
+          description: A item object. 
+        '400':
+          description: The specified item ID is invalid (not a number).
+        '404':
+          description: A item with the specified ID was not found.
+        default:
+          description: Unexpected error
+  /item/{itemId}:
+    get:
+      tags:
+        -  Item Detail
+      summary: Returns a item details by ID.
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          description: item id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+    put:
+      tags:
+        -  Item Detail 
+      summary: Returns a item details by ID.
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          description: item id is present in the path.
+          schema:
+            type: string
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item' 
+      responses: 
+        '200':
+          description: OK
+    delete:
+      tags:
+        -  Item Detail 
+      summary: Returns a item details by ID.
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          description: item id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+
+  paths:
+  /organization:
+    post:
+      tags:
+        - Organization Detail
+      summary: Return created organization with token.       
+      post:
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization' 
+      responses:
+        '200':
+          description: A organization object. 
+        '400':
+          description: The specified organization ID is invalid (not a number).
+        '404':
+          description: A organization with the specified ID was not found.
+        default:
+          description: Unexpected error
+  /organization/{organizationId}:
+    get:
+      tags:
+        -  Organization Detail
+      summary: Returns a organization details by Id.
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          description: organization id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+    put:
+      tags:
+        -  Organization Detail
+      summary: Returns a organization details by id.
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          description: organization id is present in the path.
+          schema:
+            type: string
+      requestBody:
+      description: Optional description in *Markdown*
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Organization' 
+      responses: 
+        '200':
+          description: OK
+    delete:
+      tags:
+        -  Organization Detail
+      summary: Returns a organization details by id.
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          description: organization id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+  paths:
+  /pricing:
+    post:
+      tags:
+        - Pricing Detail
+      summary: Return created pricing with token.       
+      post:
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pricing' 
+      responses:
+        '200':
+          description: A pricing object. 
+        '400':
+          description: The specified pricing ID is invalid (not a number).
+        '404':
+          description: A pricing with the specified ID was not found.
+        default:
+          description: Unexpected error
+  /pricing/{pricingId}:
+    get:
+      tags:
+        -  Pricing Detail
+      summary: Returns a pricing details by Id.
+      parameters:
+        - name: pricingId
+          in: path
+          required: true
+          description: pricing id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+    put:
+      tags:
+        -  Pricing Detail
+      summary: Returns a pricing details by id.
+      parameters:
+        - name: pricingId
+          in: path
+          required: true
+          description: pricing id is present in the path.
+          schema:
+            type: string
+      requestBody:
+      description: Optional description in *Markdown*
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pricing' 
+      responses: 
+        '200':
+          description: OK
+    delete:
+      tags:
+        -  Pricing Detail
+      summary: Returns a pricing details by id.
+      parameters:
+        - name: pricingId
+          in: path
+          required: true
+          description: pricing id is present in the path.
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+  paths:
+  /pricing/calculatePrice:
+    post:
+      tags:
+        - Pricing Detail
+      summary: Returns total price.       
+      post:
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPriceDetails' 
+      responses:
+        '200':
+          description: A pricing object. 
+        '400':
+          description: The specified pricing ID is invalid (not a number).
+        '404':
+          description: A pricing with the specified ID was not found.
+        default:
+          description: Unexpected error

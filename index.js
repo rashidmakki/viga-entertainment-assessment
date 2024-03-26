@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database');
+const { swaggerServe, swaggerSetup } = require("./config/swagger.config");
 const dotenv = require('dotenv').config();
 const app = express();
 
@@ -26,6 +27,7 @@ const pricingRouter = require('./route/pricing.route')
 app.use('/api/organization', organizationRouter);
 app.use('/api/item',itemRouter);
 app.use('/api/pricing',pricingRouter);
+app.use("/api-docs", swaggerServe, swaggerSetup)
 
 app.listen(process.env.SERVER_PORT, () => console.log("Server is running: " + process.env.SERVER_PORT))
 
