@@ -39,7 +39,7 @@ components:
           example: "1"
         item_id:
           type: number
-          example: 1.5
+          example: 1
         zone:
           type: string
           example: central
@@ -48,7 +48,7 @@ components:
           example: 5
         km_price:
           type: number
-          example: 1
+          example: 1.5
         fix_price:
           type: number
           example: 10
