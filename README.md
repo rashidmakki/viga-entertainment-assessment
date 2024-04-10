@@ -4,7 +4,7 @@ Assessment on NodeJS, Express, Sequelize , Postgres
 ## Deployed Live:
 
 - Deployed [Web service](https://viga-entertainment-assessment.onrender.com/api-docs/)
-
+- Deployed [AWS Web Service](http://nodejs-food-server-app-env.eba-f3mf4uud.ap-southeast-2.elasticbeanstalk.com/api-docs/)
 ## Add Database details:
 
 - Add or change database details in .env file.
