@@ -1,5 +1,5 @@
 # Assessment On Food Delivery
-Assessment on NodeJS, Express, Sequelize , Postgres
+Assessment on Food Delivery using NodeJS, Express, Sequelize , Postgres, EC2, S3 Bucket, RDS, ElasticBeanStalk
 
 ## Deployed Live:
 
